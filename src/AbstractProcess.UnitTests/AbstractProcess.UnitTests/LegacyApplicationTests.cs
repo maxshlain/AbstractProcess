@@ -12,28 +12,26 @@ public class LegacyApplication
         process.StartInfo.UseShellExecute = false;
         process.StartInfo.RedirectStandardOutput = true;
         process.StartInfo.RedirectStandardError = true;
-        
+
         process.Start();
-        
+
         // Read and print the output
         string output = process.StandardOutput.ReadToEnd();
         Console.WriteLine(output);
-        
+
         process.WaitForExit();
-        
+
         return process.ExitCode;
     }
 }
 
-
-
-public class UnitTest1
+public class LegacyApplicationTests
 {
     [Fact]
-    public void Test1()
+    public void Ping_127_0_0_1()
     {
         var app = new LegacyApplication();
-        var result = app.PingServer("127.0.0.1", 123);
+        var result = app.PingServer("127.0.0.1");
         Assert.Equal(0, result);
     }
 }
